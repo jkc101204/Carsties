@@ -1,0 +1,43 @@
+*Install EntityFramework
+-> dotnet tool install dotnet-ef -g
+
+*Update EntityFramework
+-> dotnet tool update dotnet-ef -g
+
+*Add Migrations
+-> dotnet ef migrations add "InitialCreate" -o Data/Migrations
+
+*Add docker-compose.yml at solution level
+This will require docker installed.
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgrespw
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata: 
+
+Then run the following command at the solution level
+-> docker compose up -d
+
+When complete, look at the Logs tab for postgress and it should state database system is ready to accept connections
+
+*Update or Create database
+-> dotnet ef database update
+
+*Drop database
+-> dotnet ef database drop
+
+*Intialize empty git repository
+-> git init
+
+*Create Git Ignore file (at solution level)
+-> dotnet new gitignore
+
+*Track Git changes
+-> git add .
