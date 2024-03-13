@@ -22,7 +22,7 @@ services:
 volumes:
   pgdata: 
 
-Then run the following command at the solution level
+Then run the following command at the solution level for MongoDb
 -> docker compose up -d
 
 When complete, look at the Logs tab for postgress and it should state database system is ready to accept connections
@@ -39,5 +39,14 @@ When complete, look at the Logs tab for postgress and it should state database s
 *Create Git Ignore file (at solution level)
 -> dotnet new gitignore
 
+*Commit git repository
+-> git commit -m "End of section 2"
+
 *Track Git changes
 -> git add .
+
+*If repository is master and not main
+-> git branch -M main\
+
+*Start a Dotnet service
+-> dotnet watch

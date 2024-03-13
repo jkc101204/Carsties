@@ -1,4 +1,5 @@
 ﻿using AuctionService.Entities;
+using System.Data;
 
 namespace AuctionService.DTOs
 {
@@ -11,6 +12,7 @@ namespace AuctionService.DTOs
         public int SoldAmount { get; set; }
         public int CurrentHighBid { get; set; }
         public DateTime CreateAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public DateTime AuctionEnd { get; set; }
         public string Status { get; set; }
         public string Make { get; set; }
