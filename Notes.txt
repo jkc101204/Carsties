@@ -39,7 +39,7 @@ When complete, look at the Logs tab for postgress and it should state database s
 *Create Git Ignore file (at solution level)
 -> dotnet new gitignore
 
-*Commit git repository
+*Commit git repository with message
 -> git commit -m "End of section 2"
 
 *Track Git changes
@@ -50,3 +50,158 @@ When complete, look at the Logs tab for postgress and it should state database s
 
 *Start a Dotnet service
 -> dotnet watch
+
+*git push (after git commit)
+-> git push orgin main
+
+
+
+With the provided color palette, let's create light and dark mode themes for a user interface.
+
+**Light Mode Theme:**
+
+- **Brand Colors:**
+  - **Primary:** #002756 (A deep, classic blue for primary interactive elements like buttons and nav links.)
+  - **Secondary:** #0B7B9E (A bright teal for secondary buttons, links, and highlights.)
+  - **Tertiary:** #C6C3B6 (A muted beige for tertiary elements and background accents.)
+  - **Alternate:** #212121 (A very dark gray for strong contrast against light elements.)
+
+- **Accent Colors:**
+  - **Accent 1:** #DDDACE (A light gray for background accents, cards, and low-priority buttons.)
+  - **Accent 2:** #212121 (Used for text and important interactive elements.)
+  - **Accent 3:** #C6C3B6 at 80% opacity (For hover states and soft UI highlights.)
+  - **Accent 4:** #0C0C0C (A softer black for less intrusive highlights and shadows.)
+
+- **Utility Colors:**
+  - **Primary Text:** #0C0C0C (Ensures readability against light backgrounds.)
+  - **Secondary Text:** #002756 (A lighter shade for secondary text to maintain legibility and interest.)
+  - **Primary Background:** #EAEAEA (A light gray that serves as a clean backdrop for content.)
+  - **Secondary Background:** #C6C3B6 (To differentiate sections like headers or side panels.)
+
+- **Semantic Colors:**
+  - **Success:** Tint #C6C3B6 toward a green, like #9CAE9D (A soft green for success indicators.)
+  - **Error:** Deepen #00447C to a more traditional red, like #A10F2D (For alerts and errors.)
+  - **Warning:** Brighten #C6C3B6 to a more alerting shade, such as #EED2B6 (For cautionary notices.)
+  - **Info:** Use a toned-down blue, such as #7B9BA6 (For informational messages.)
+
+**Dark Mode Theme:**
+
+- **Brand Colors:**
+  - **Primary:** #00447C (Stands out against the dark background for primary actions.)
+  - **Secondary:** #0B7B9E (Provides a pop of lighter blue in the dark mode for secondary elements.)
+  - **Tertiary:** #DDDACE (Adds warmth and prevents the interface from feeling too cold.)
+  - **Alternate:** #212121 (Used for text and accenting against darker UI elements.)
+
+- **Accent Colors:**
+  - **Accent 1:** #F2F3F4 (For bright spots of color that attract attention to key areas.)
+  - **Accent 2:** #0B7B9E (A bright spot in a dark theme, used for interactive elements.)
+  - **Accent 3:** #DDDACE (For low-contrast elements against the dark mode backdrop.)
+  - **Accent 4:** #212121 (For subtler emphasis where needed.)
+
+- **Utility Colors:**
+  - **Primary Text:** #F2F3F4 (For clear readability on dark backgrounds.)
+  - **Secondary Text:** #DDDACE (For secondary text that stands out without overwhelming the primary text.)
+  - **Primary Background:** #212121 (A solid dark base for the main background.)
+  - **Secondary Background:** #212121 (A shade variation for depth and visual hierarchy.) <- lighter version
+
+- **Semantic Colors:**
+  - **Success:** Brighten the green-tinted #C6C3B6 for a visible success message, like #B4C9B6.
+  - **Error:** A reddish hue adapted for dark mode, like #D16D6D (For error alerts.)
+  - **Warning:** A toned yellow-orange shade for warnings in dark mode, like #E3C16D (To ensure visibility.)
+  - **Info:** Lighten #0B7B9E to a clearer teal, like #3BA5AE (For information clarity in dark mode.)
+
+These themes maintain a professional and sleek aesthetic, with the primary blue #00447C serving as the dominant interaction color. The additional colors provide depth and aid in visual hierarchy, ensuring a user-friendly experience that's both intuitive and aesthetically pleasing.
+
+
+Primary Brand Color: This is the most visible color in your app. It's often used for:
+
+FloatingActionButton: To draw attention to the primary action in an app.
+AppBar: To maintain a consistent brand identity.
+TextButton, ElevatedButton: For call-to-action buttons that stand out.
+Checkbox, Radio, Switch: To indicate an active or selected state.
+Secondary Color: Complements the primary color and is used to differentiate elements without overwhelming the primary color. It can be applied to:
+
+BottomNavigationBar: To highlight the currently selected item.
+TabBar: To indicate the active tab.
+Secondary action buttons or links.
+Tertiary Color: Used for less prominent components that still relate to the brand. Widgets might include:
+
+Icon: For icons that are not the main focus but still need to be visible.
+Divider: To subtly separate content.
+Less important Text elements.
+Alternate Color: Offers additional contrast or is used to draw attention to special areas, such as:
+
+Promotional Card: To highlight offers or announcements.
+SnackBar: For less critical information that should catch the user's attention.
+Accent Colors: Used to accentuate actions or highlight key interface elements, including:
+
+FloatingActionButton: If using multiple FABs, you might choose different accent colors for each.
+ProgressBar: To show progress in a task.
+Secondary or tertiary buttons or text.
+Utility Colors: These are typically neutral and are used extensively across the app for:
+
+Text: Primary text would use a color that contrasts well with the background for readability.
+Scaffold: As the primary background color of your app’s screens.
+Dialog: Background for pop-ups or modal windows.
+Semantic Colors: Specifically used to convey meaning, such as:
+
+SnackBar, AlertDialog: For success messages (green), errors (red), warnings (yellow), and informational messages (blue).
+Form validation messages: Error colors for text below TextFormFields when input validation fails.
+
+
+- **Display Large (64px, Normal, Primary Text, Primary Family):**
+  - Use for main titles on landing or splash screens where you want to make a strong visual impact.
+  - Widgets: `Text` with a `TextStyle` that might use `Theme.of(context).textTheme.headline1`.
+
+- **Headline Large (36px, Semi Bold, Primary Text, Primary Family):**
+  - For significant headings in your app, such as section titles on a dashboard.
+  - Widgets: `Text` with `TextStyle` as `Theme.of(context).textTheme.headline3`.
+
+- **Headline Medium (32px, Semi Bold, Primary Text, Primary Family):**
+  - For titles of cards or modal headers where information needs to stand out but not dominate.
+  - Widgets: `Text` with `TextStyle` as `Theme.of(context).textTheme.headline4`.
+
+- **Headline Small (24px, Normal, Primary Text, Primary Family):**
+  - For subheadings within content areas or titles for lists.
+  - Widgets: `Text` with `TextStyle` as `Theme.of(context).textTheme.headline5`.
+
+- **Title Large (22px, Medium, Primary Text, Primary Family):**
+  - For titles in app bars or tabs.
+  - Widgets: `AppBar`, `Tab` using `Theme.of(context).textTheme.subtitle1`.
+
+- **Title Medium (18px, Normal, Info Color, Secondary Family):**
+  - For less important titles or for informational text that should be noticeable but not primary.
+  - Widgets: `Text` with `TextStyle` as `Theme.of(context).textTheme.subtitle2`.
+
+- **Title Small (16px, Medium, Info Color, Secondary Family):**
+  - For additional information or hints under form fields or as a secondary reference.
+  - Widgets: `TextFormField` labels, `Caption`.
+
+- **Label Large (14px, Normal, Secondary Text, Secondary Family):**
+  - For form labels, button text, or settings titles.
+  - Widgets: `OutlinedButton`, `TextButton`, `CheckboxListTile`, `RadioListTile`.
+
+- **Label Medium (12px, Normal, Secondary Text, Secondary Family):**
+  - For secondary labels or annotations.
+  - Widgets: `Text` used for annotations in charts, tooltips.
+
+- **Body Large (16px, Normal, Primary Text, Primary Family):**
+  - Main content text like paragraphs or long-form content.
+  - Widgets: `Text` within a `Scaffold` body or `Card`.
+
+- **Body Medium (14px, Normal, Primary Text, Primary Family):**
+  - For general UI elements like descriptions, list items, or content summaries.
+  - Widgets: `ListTile` title, `Text` in `AlertDialog` content.
+
+- **Body Small (12px, Normal, Primary Text, Primary Family):**
+  - For tertiary information that's less critical but should be available, like captions or disclaimers.
+  - Widgets: `Caption`, `Text` in footers or beneath images.
+
+/* Hero Image */
+
+position: absolute;
+width: 428px;
+height: 351px;
+left: 0px;
+top: 0px;
+

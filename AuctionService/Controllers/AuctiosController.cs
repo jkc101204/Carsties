@@ -3,6 +3,8 @@ using AuctionService.DTOs;
 using AuctionService.Entities;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Contracts;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,11 +16,15 @@ namespace AuctionService.Controllers
     {
         private readonly AuctionDbContext context;
         private readonly IMapper mapper;
+        private readonly IPublishEndpoint publishEndpoint;
 
-        public AuctiosController(AuctionDbContext context, IMapper mapper) 
+        public AuctiosController(AuctionDbContext context, 
+                                 IMapper mapper, 
+                                 IPublishEndpoint publishEndpoint) 
         {
             this.context = context;
             this.mapper = mapper;
+            this.publishEndpoint = publishEndpoint;
         }
 
         [HttpGet]
@@ -57,6 +63,8 @@ namespace AuctionService.Controllers
 
             auction.Seller = "test";
             this.context.Auctions.Add(auction);
+            AuctionDto newAuction = this.mapper.Map<AuctionDto>(auction);
+            await this.publishEndpoint.Publish(this.mapper.Map<AuctionCreated>(newAuction));
             bool result = await this.context.SaveChangesAsync() > 0;
 
             if(!result)
@@ -64,7 +72,7 @@ namespace AuctionService.Controllers
                 return BadRequest("Could not save changes to the DB");
             }
 
-            return CreatedAtAction(nameof(GetAuctionById), new { auction.Id }, this.mapper.Map<AuctionDto>(auction));
+            return CreatedAtAction(nameof(GetAuctionById), new { auction.Id }, newAuction);
         }
 
         [HttpPut("{id}")]
@@ -87,7 +95,10 @@ namespace AuctionService.Controllers
             auction.Item.Mileage = updateAuctionDto.Mileage ?? auction.Item.Mileage;
             auction.Item.Year = updateAuctionDto.Year ?? auction.Item.Year;
 
+            await this.publishEndpoint.Publish(this.mapper.Map<AuctionUpdated>(auction));
+
             bool result = await this.context.SaveChangesAsync() > 0;
+            
             if(result)
             {
                 return Ok(result);
@@ -108,6 +119,9 @@ namespace AuctionService.Controllers
             // TODO: check seller == username
 
             this.context.Auctions.Remove(auction);
+
+            await this.publishEndpoint.Publish(new AuctionDeleted { Id = auction.Id.ToString() });
+
             bool result = await this.context.SaveChangesAsync() > 0;
 
             if (!result)
